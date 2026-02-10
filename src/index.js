@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
+import { HelmetProvider } from "react-helmet-async";
+import SEO from "./components/SEO";
 
 const pizzaData = [
   {
@@ -131,4 +133,16 @@ function Order({ openHour, closeHour }) {
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(
+  <HelmetProvider>
+    <SEO
+      title={"FAST REACT PIZZA CO. — Pizza Menu"}
+      description={
+        "Delicious artisanal pizzas, customizable toppings, and fast delivery. View our pizza menu and order online."
+      }
+      url={"https://your-domain.com/"}
+      image={process.env.PUBLIC_URL + "/og-image.jpg"}
+    />
+    <App />
+  </HelmetProvider>,
+);
